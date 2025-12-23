@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>HAPPY BDAY SATVIK 💀</title>
+
+    <style>
+        body {
+            margin: 1;
+            padding: 11px;
+            font-family: "Comic Sans MS", cursive;
+            text-align: center;
+            background: linear-gradient(46deg, red, yellow, lime, cyan, magenta);
+            background-size: 401% 400%;
+            animation: bg 6s infinite;
+            cursor: progress;
+        }
+
+        @keyframes bg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            animation: shake 0.15s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(1deg); }
+            50% { transform: rotate(-1deg); }
+            100% { transform: rotate(1deg); }
+        }
+
+        .box {
+            background: rgba(255,255,255,0.8);
+            border: 6px dotted black;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 500px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            font-size: 1.3rem;
+            padding: 15px;
+            margin: 10px 0;
+            background: hotpink;
+            border: 4px dashed black;
+            border-radius: 12px;
+        }
+
+        button:active {
+            transform: scale(1.1) rotate(2deg);
+            background: yellow;
+        }
+
+        marquee {
+            font-size: 1.4rem;
+            color: red;
+        }
+        #bdayBox {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, red, yellow, magenta);
+            display: none;
+            z-index: 3000;
+            text-align: center;
+            /* Ensure it covers everything on mobile */
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #bdayText {
+            font-size: 12vw;
+            font-weight: 900;
+            /* Center vertically and horizontally */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            color: white;
+            animation: dance 0.2s infinite alternate, rainbow 1s infinite;
+            text-shadow: 5px 5px black;
+        }
+
+        #closeHint {
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+            font-size: 1.2rem;
+            color: black;
+            font-weight: bold;
+        }
+
+        @keyframes dance {
+            from { transform: translate(-50%, -50%) rotate(-10deg) scale(1); }
+            to   { transform: translate(-50%, -50%) rotate(10deg) scale(1.2); }
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            25% { color: yellow; }
+            50% { color: lime; }
+            75% { color: cyan; }
+            100% { color: magenta; }
+        }
+        #ytHolder {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+
+<body ontouchstart="unlockAudio()" onclick="unlockAudio()">
+
+<marquee>🎉 HAPPY BIRTHDAY Satvik Mishra of 9N  🎉 YOU ARE OFFICIALLY OLD 💀</marquee>
+
+<h1>LEVEL UP UNLOCKED 🎂</h1>
+
+<div class="box">
+    <button onclick="alertSpam()">DO NOT CLICK ❌</button>
+    <button onclick="openBday()">Happy BDay button, click and scroll below and remember, it has a good music so listne it</button>
+    <button onclick="rickroll()">CLAIM GIFT 🎁</button>
+    <button onclick="roast()">ROAST ME 🔥</button>
+    <button onclick="runAway(this)">CATCH ME 😈</button>
+</div>
+
+<div class="box">
+    <h2 id="roastText">Tap something my friend 😭</h2>
+</div>
+
+<div class="box">
+    <h3 id="load">Sending gift... 1%</h3>
+</div>
+
+<div id="bdayBox">
+    <div id="bdayText">HAPPY BIRTHDAY!</div>
+    <div id="closeHint">(Tap anywhere to close)</div>
+</div>
+
+<!-- AUDIO -->
+        <audio id="bdaySong" preload="auto">
+            <source src="https://jaynetblacemen.github.io/bday-cring-web-gift/bdayolo.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="boom" autoplay muted loop>
+    <source src="https://www.myinstants.com/media/sounds/vine-boom.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const audio = document.getElementById("boom");
+    let audioUnlocked = false;
+
+    function unlockAudio() {
+        if (!audioUnlocked) {
+            audio.muted = false;
+            audio.volume = 0.8;
+            audio.play();
+            audioUnlocked = true;
+        }
+    }
+
+    function alertSpam() {
+        for (let i = 0; i < 6; i++) {
+            alert("WHY DID YOU CLICK 😭");
+        }
+    }
+
+    function rickroll() {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
+
+    const roasts = [
+        "Science maam ka chahita",
+        "classified as a girl by hindi maam💀",
+        "Bhai kon book sa baradha note likata ha",
+        "ARE YOU BLACK? Maybe.... 😭",
+        "Bag ki copy count kar na wala sanki",
+        "GG but you lost"
+    ];
+
+    function roast() {
+        document.getElementById("roastText").innerText =
+            roasts[Math.floor(Math.random() * roasts.length)];
+    }
+
+    let percent = 1;
+    setInterval(() => {
+        if (percent < 99) percent++;
+        document.getElementById("load").innerText =
+            "Sending gift... " + percent + "%";
+    }, 250);
+
+    function runAway(btn) {
+        btn.style.position = "fixed";
+        btn.style.left = Math.random() * 70 + "%";
+        btn.style.top = Math.random() * 70 + "%";
+    }
+
+    setInterval(() => {
+        alert("HAPPY BIRTHDAY 🎉 NO ESCAPE 😈");
+    }, 9999999);
+
+    function openBday() {
+        const box  = document.getElementById("bdayBox");
+        const song = document.getElementById("bdaySong");
+
+        // show cringe box
+        box.style.display = "block";
+
+        // HARD RESET audio
+        song.pause();
+        song.currentTime = 0;
+        song.volume = 1;
+
+        // play on button click (user interaction ✅)
+        song.play().then(() => {
+            console.log("BDAY MUSIC BLASTING 🔊🔥");
+        }).catch(err => {
+            console.log("Audio blocked:", err);
+        });
+    }
+
+    document.getElementById("bdayBox").onclick = () => {
+        const song = document.getElementById("bdaySong");
+        song.pause();
+        song.currentTime = 0; // Reset audio when closing
+        document.getElementById("bdayBox").style.display = "none";
+    };
+
+</script>
+
+<marquee direction="right">🎁 NO GIFT ONLY TRAUMA 😎 GG WP</marquee>
+
+</body>
+</html>
